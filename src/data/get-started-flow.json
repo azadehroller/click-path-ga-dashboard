@@ -1,0 +1,108 @@
+{
+  "overview": {
+    "totalVisitors": 24567,
+    "reachedGetStarted": 15234,
+    "startedOnboarding": 9876,
+    "completedOnboarding": 7234,
+    "conversionRate": 29.4,
+    "avgTimeToGetStarted": "2m 15s"
+  },
+  "pathAnalysis": [
+    {
+      "path": "Homepage → Get Started",
+      "users": 8456,
+      "percentage": 55.5,
+      "avgClicks": 1,
+      "avgTime": "45s"
+    },
+    {
+      "path": "Features → Get Started",
+      "users": 3234,
+      "percentage": 21.2,
+      "avgClicks": 2,
+      "avgTime": "1m 32s"
+    },
+    {
+      "path": "Pricing → Get Started",
+      "users": 2345,
+      "percentage": 15.4,
+      "avgClicks": 3,
+      "avgTime": "2m 15s"
+    },
+    {
+      "path": "Blog → Get Started",
+      "users": 789,
+      "percentage": 5.2,
+      "avgClicks": 4,
+      "avgTime": "3m 45s"
+    },
+    {
+      "path": "Direct URL",
+      "users": 410,
+      "percentage": 2.7,
+      "avgClicks": 0,
+      "avgTime": "0s"
+    }
+  ],
+  "topReferringSections": [
+    {
+      "section": "Hero CTA",
+      "clicks": 5234,
+      "conversionRate": 68.5
+    },
+    {
+      "section": "Navigation Menu",
+      "clicks": 4567,
+      "conversionRate": 45.2
+    },
+    {
+      "section": "Sticky Footer CTA",
+      "clicks": 2890,
+      "conversionRate": 72.3
+    },
+    {
+      "section": "Pricing Card",
+      "clicks": 1876,
+      "conversionRate": 82.1
+    },
+    {
+      "section": "Feature Comparison",
+      "clicks": 667,
+      "conversionRate": 38.9
+    }
+  ],
+  "userJourneySteps": [
+    {
+      "step": "Get Started Click",
+      "users": 15234,
+      "completionRate": 100
+    },
+    {
+      "step": "Account Type Selection",
+      "users": 12456,
+      "completionRate": 81.8
+    },
+    {
+      "step": "Email Verification",
+      "users": 10234,
+      "completionRate": 67.2
+    },
+    {
+      "step": "Profile Setup",
+      "users": 9876,
+      "completionRate": 64.8
+    },
+    {
+      "step": "Onboarding Complete",
+      "users": 7234,
+      "completionRate": 47.5
+    }
+  ],
+  "timeToConversion": [
+    { "range": "0-30s", "users": 1234, "percentage": 12.5 },
+    { "range": "30s-1m", "users": 2345, "percentage": 23.7 },
+    { "range": "1m-2m", "users": 2890, "percentage": 29.3 },
+    { "range": "2m-5m", "users": 2456, "percentage": 24.9 },
+    { "range": "5m+", "users": 951, "percentage": 9.6 }
+  ]
+}

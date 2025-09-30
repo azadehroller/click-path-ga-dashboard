@@ -1,0 +1,191 @@
+{
+  "overview": {
+    "totalSessions": 45678,
+    "avgPagesPerSession": 4.2,
+    "avgSessionDuration": "5m 34s",
+    "bounceRate": 28.5,
+    "returnVisitorRate": 42.3
+  },
+  "topPages": [
+    {
+      "page": "Homepage",
+      "visits": 45678,
+      "avgTimeOnPage": "1m 45s",
+      "exitRate": 15.2,
+      "bounceRate": 28.5
+    },
+    {
+      "page": "Features",
+      "visits": 23456,
+      "avgTimeOnPage": "2m 32s",
+      "exitRate": 22.3,
+      "bounceRate": 18.7
+    },
+    {
+      "page": "Pricing",
+      "visits": 19234,
+      "avgTimeOnPage": "1m 58s",
+      "exitRate": 25.6,
+      "bounceRate": 12.4
+    },
+    {
+      "page": "About Us",
+      "visits": 12345,
+      "avgTimeOnPage": "1m 23s",
+      "exitRate": 35.8,
+      "bounceRate": 42.1
+    },
+    {
+      "page": "Blog",
+      "visits": 9876,
+      "avgTimeOnPage": "3m 45s",
+      "exitRate": 45.2,
+      "bounceRate": 38.9
+    },
+    {
+      "page": "Contact",
+      "visits": 7654,
+      "avgTimeOnPage": "2m 12s",
+      "exitRate": 52.3,
+      "bounceRate": 22.1
+    },
+    {
+      "page": "Case Studies",
+      "visits": 6543,
+      "avgTimeOnPage": "4m 18s",
+      "exitRate": 38.7,
+      "bounceRate": 15.6
+    },
+    {
+      "page": "FAQ",
+      "visits": 5432,
+      "avgTimeOnPage": "2m 56s",
+      "exitRate": 42.1,
+      "bounceRate": 25.8
+    }
+  ],
+  "navigationFlow": [
+    {
+      "from": "Homepage",
+      "to": "Features",
+      "users": 12456,
+      "percentage": 27.3
+    },
+    {
+      "from": "Homepage",
+      "to": "Pricing",
+      "users": 9876,
+      "percentage": 21.6
+    },
+    {
+      "from": "Features",
+      "to": "Pricing",
+      "users": 8234,
+      "percentage": 35.1
+    },
+    {
+      "from": "Pricing",
+      "to": "Get Started",
+      "users": 5678,
+      "percentage": 29.5
+    },
+    {
+      "from": "Features",
+      "to": "Case Studies",
+      "users": 4567,
+      "percentage": 19.5
+    },
+    {
+      "from": "Blog",
+      "to": "Features",
+      "users": 3456,
+      "percentage": 35.0
+    },
+    {
+      "from": "Case Studies",
+      "to": "Get Started",
+      "users": 2890,
+      "percentage": 44.2
+    },
+    {
+      "from": "About Us",
+      "to": "Contact",
+      "users": 2345,
+      "percentage": 19.0
+    }
+  ],
+  "mostCommonPaths": [
+    {
+      "path": "Homepage → Features → Pricing → Get Started",
+      "users": 3456,
+      "conversionRate": 85.2
+    },
+    {
+      "path": "Homepage → Pricing → Get Started",
+      "users": 2890,
+      "conversionRate": 78.9
+    },
+    {
+      "path": "Homepage → Features → Case Studies → Get Started",
+      "users": 1876,
+      "conversionRate": 72.3
+    },
+    {
+      "path": "Blog → Features → Pricing → Get Started",
+      "users": 1234,
+      "conversionRate": 68.5
+    },
+    {
+      "path": "Homepage → About → Contact",
+      "users": 987,
+      "conversionRate": 45.2
+    }
+  ],
+  "scrollDepth": {
+    "homepage": {
+      "0-25%": 45678,
+      "25-50%": 38456,
+      "50-75%": 28934,
+      "75-100%": 15234
+    },
+    "features": {
+      "0-25%": 23456,
+      "25-50%": 19876,
+      "50-75%": 14567,
+      "75-100%": 9234
+    },
+    "pricing": {
+      "0-25%": 19234,
+      "25-50%": 17456,
+      "50-75%": 15234,
+      "75-100%": 12890
+    }
+  },
+  "clickHeatmap": [
+    {
+      "element": "Primary CTA (Hero)",
+      "clicks": 8934,
+      "position": "above-fold"
+    },
+    {
+      "element": "Navigation - Features",
+      "clicks": 7456,
+      "position": "header"
+    },
+    {
+      "element": "Navigation - Pricing",
+      "clicks": 6234,
+      "position": "header"
+    },
+    {
+      "element": "Secondary CTA (Mid-page)",
+      "clicks": 4567,
+      "position": "mid-fold"
+    },
+    {
+      "element": "Footer - Get Started",
+      "clicks": 3456,
+      "position": "footer"
+    }
+  ]
+}

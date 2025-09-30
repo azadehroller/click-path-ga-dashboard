@@ -1,0 +1,296 @@
+{
+  "overview": {
+    "totalUsers": 873743,
+    "newUsers": 570507,
+    "returningUsers": 303236,
+    "newUserRate": 65.3
+  },
+  "channels": [
+    {
+      "channel": "Display",
+      "users": 273743,
+      "newUsers": 270507,
+      "returningUsers": 41817,
+      "percentage": 31.3,
+      "conversionRate": 0.44,
+      "avgEngagement": 47.00966918,
+      "engagedSessions": 444448879,
+      "eventCount": 13,
+      "keyEvents": 13,
+      "avgSessionDuration": "47s",
+      "bounceRate": 55.6
+    },
+    {
+      "channel": "Referral",
+      "users": 124961,
+      "newUsers": 113088,
+      "returningUsers": 15473,
+      "percentage": 14.3,
+      "conversionRate": 0.72,
+      "avgEngagement": 54.17879881,
+      "engagedSessions": 715774812,
+      "eventCount": 153,
+      "keyEvents": 153,
+      "avgSessionDuration": "54s",
+      "bounceRate": 28.3
+    },
+    {
+      "channel": "Direct",
+      "users": 124322,
+      "newUsers": 112808,
+      "returningUsers": 21828,
+      "percentage": 14.2,
+      "conversionRate": 0.99,
+      "avgEngagement": 100.819272,
+      "engagedSessions": 990168546,
+      "eventCount": 594,
+      "keyEvents": 594,
+      "avgSessionDuration": "1m 41s",
+      "bounceRate": 1
+    },
+    {
+      "channel": "Organic Search",
+      "users": 118910,
+      "newUsers": 111341,
+      "returningUsers": 28102,
+      "percentage": 13.6,
+      "conversionRate": 0.93,
+      "avgEngagement": 92.26754549,
+      "engagedSessions": 931656438,
+      "eventCount": 759,
+      "keyEvents": 759,
+      "avgSessionDuration": "1m 32s",
+      "bounceRate": 7
+    },
+    {
+      "channel": "Paid Search",
+      "users": 63193,
+      "newUsers": 60501,
+      "returningUsers": 11194,
+      "percentage": 7.2,
+      "conversionRate": 0.83,
+      "avgEngagement": 63.56292619,
+      "engagedSessions": 834105096,
+      "eventCount": 764,
+      "keyEvents": 764,
+      "avgSessionDuration": "1m 4s",
+      "bounceRate": 17
+    },
+    {
+      "channel": "Paid Social",
+      "users": 19352,
+      "newUsers": 19181,
+      "returningUsers": 733,
+      "percentage": 2.2,
+      "conversionRate": 0.16,
+      "avgEngagement": 8.26624282,
+      "engagedSessions": 164935132,
+      "eventCount": 2,
+      "keyEvents": 2,
+      "avgSessionDuration": "8s",
+      "bounceRate": 83.5
+    },
+    {
+      "channel": "Unassigned",
+      "users": 15011,
+      "newUsers": 14540,
+      "returningUsers": 419,
+      "percentage": 1.7,
+      "conversionRate": 0.31,
+      "avgEngagement": 13.08071959,
+      "engagedSessions": 313649434,
+      "eventCount": 17,
+      "keyEvents": 17,
+      "avgSessionDuration": "13s",
+      "bounceRate": 68.7
+    },
+    {
+      "channel": "Cross-network",
+      "users": 11514,
+      "newUsers": 11207,
+      "returningUsers": 797,
+      "percentage": 1.3,
+      "conversionRate": 0.44,
+      "avgEngagement": 29.3202785,
+      "engagedSessions": 439599651,
+      "eventCount": 240,
+      "keyEvents": 240,
+      "avgSessionDuration": "29s",
+      "bounceRate": 56.1
+    },
+    {
+      "channel": "Organic Social",
+      "users": 5697,
+      "newUsers": 5445,
+      "returningUsers": 298,
+      "percentage": 0.7,
+      "conversionRate": 0.47,
+      "avgEngagement": 16.5024735,
+      "engagedSessions": 479328621,
+      "eventCount": 12,
+      "keyEvents": 12,
+      "avgSessionDuration": "17s",
+      "bounceRate": 52.5
+    },
+    {
+      "channel": "Paid Other",
+      "users": 4966,
+      "newUsers": 4823,
+      "returningUsers": 713,
+      "percentage": 0.6,
+      "conversionRate": 0.39,
+      "avgEngagement": 22.57893677,
+      "engagedSessions": 398711236,
+      "eventCount": 10,
+      "keyEvents": 10,
+      "avgSessionDuration": "23s",
+      "bounceRate": 60.1
+    },
+    {
+      "channel": "Email",
+      "users": 3695,
+      "newUsers": 3498,
+      "returningUsers": 502,
+      "percentage": 0.4,
+      "conversionRate": 0.59,
+      "avgEngagement": 61.4280945,
+      "engagedSessions": 595549374,
+      "eventCount": 12,
+      "keyEvents": 12,
+      "avgSessionDuration": "1m 1s",
+      "bounceRate": 40.5
+    },
+    {
+      "channel": "Organic Shopping",
+      "users": 139,
+      "newUsers": 125,
+      "returningUsers": 0,
+      "percentage": 0.02,
+      "conversionRate": 0.05,
+      "avgEngagement": 6.88636363,
+      "engagedSessions": 53030303,
+      "eventCount": 0,
+      "keyEvents": 0,
+      "avgSessionDuration": "7s",
+      "bounceRate": 94.5
+    },
+    {
+      "channel": "Organic Video",
+      "users": 66,
+      "newUsers": 46,
+      "returningUsers": 5,
+      "percentage": 0.01,
+      "conversionRate": 0.88,
+      "avgEngagement": 68.5967741,
+      "engagedSessions": 887096774,
+      "eventCount": 1,
+      "keyEvents": 1,
+      "avgSessionDuration": "1m 9s",
+      "bounceRate": 12.1
+    },
+    {
+      "channel": "Paid Video",
+      "users": 1,
+      "newUsers": 0,
+      "returningUsers": 1,
+      "percentage": 0.0001,
+      "conversionRate": 0,
+      "avgEngagement": 5,
+      "engagedSessions": 0,
+      "eventCount": 0,
+      "keyEvents": 0,
+      "avgSessionDuration": "5s",
+      "bounceRate": 100
+    }
+  ],
+  "socialBreakdown": [
+    {
+      "platform": "LinkedIn",
+      "users": 2456,
+      "conversionRate": 5.2,
+      "engagement": "High"
+    },
+    {
+      "platform": "Twitter",
+      "users": 1678,
+      "conversionRate": 2.8,
+      "engagement": "Medium"
+    },
+    {
+      "platform": "Facebook",
+      "users": 1234,
+      "conversionRate": 1.9,
+      "engagement": "Low"
+    },
+    {
+      "platform": "Instagram",
+      "users": 329,
+      "conversionRate": 2.1,
+      "engagement": "Low"
+    }
+  ],
+  "topReferrers": [
+    {
+      "source": "producthunt.com",
+      "users": 1234,
+      "conversionRate": 12.3
+    },
+    {
+      "source": "techcrunch.com",
+      "users": 876,
+      "conversionRate": 8.9
+    },
+    {
+      "source": "ycombinator.com",
+      "users": 456,
+      "conversionRate": 15.6
+    }
+  ],
+  "geographicData": [
+    {
+      "country": "United States",
+      "users": 350000,
+      "percentage": 40.1,
+      "conversionRate": 0.68
+    },
+    {
+      "country": "United Kingdom",
+      "users": 125000,
+      "percentage": 14.3,
+      "conversionRate": 0.59
+    },
+    {
+      "country": "Canada",
+      "users": 87000,
+      "percentage": 10.0,
+      "conversionRate": 0.52
+    },
+    {
+      "country": "Germany",
+      "users": 65000,
+      "percentage": 7.4,
+      "conversionRate": 0.48
+    },
+    {
+      "country": "Australia",
+      "users": 52000,
+      "percentage": 6.0,
+      "conversionRate": 0.61
+    },
+    {
+      "country": "Other",
+      "users": 194743,
+      "percentage": 22.3,
+      "conversionRate": 0.42
+    }
+  ],
+  "trends": {
+    "weekly": [
+      { "week": "Week 1", "users": 165000, "conversionRate": 0.58 },
+      { "week": "Week 2", "users": 178000, "conversionRate": 0.62 },
+      { "week": "Week 3", "users": 192000, "conversionRate": 0.68 },
+      { "week": "Week 4", "users": 185000, "conversionRate": 0.65 },
+      { "week": "Week 5", "users": 153743, "conversionRate": 0.59 }
+    ]
+  }
+}

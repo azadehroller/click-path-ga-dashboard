@@ -1,0 +1,111 @@
+{
+  "overview": {
+    "totalUsers": 873743,
+    "formStarts": 12485,
+    "formCompletions": 2242,
+    "conversionRate": 0.26,
+    "averageTimeToComplete": "3m 42s",
+    "dropOffRate": 82.1
+  },
+  "stepByStepFlow": [
+    {
+      "step": "Landing Page",
+      "users": 873743,
+      "percentage": 100,
+      "avgTimeOnPage": "45s"
+    },
+    {
+      "step": "Pricing Page",
+      "users": 118910,
+      "percentage": 13.6,
+      "avgTimeOnPage": "1m 32s"
+    },
+    {
+      "step": "Get Started Page",
+      "users": 15234,
+      "percentage": 1.7,
+      "avgTimeOnPage": "1m 12s"
+    },
+    {
+      "step": "Form Interaction",
+      "users": 12485,
+      "percentage": 1.4,
+      "avgTimeOnPage": "52s"
+    },
+    {
+      "step": "Form Fields Completed",
+      "users": 4678,
+      "percentage": 0.5,
+      "avgTimeOnPage": "1m 5s"
+    },
+    {
+      "step": "Form Submission",
+      "users": 2242,
+      "percentage": 0.26,
+      "avgTimeOnPage": "15s"
+    }
+  ],
+  "dropOffPoints": [
+    {
+      "point": "Landing to Pricing",
+      "dropOff": 754833,
+      "dropOffRate": 86.4,
+      "reason": "Not interested in pricing"
+    },
+    {
+      "point": "Pricing to Get Started",
+      "dropOff": 103676,
+      "dropOffRate": 87.2,
+      "reason": "Price evaluation"
+    },
+    {
+      "point": "Get Started to Form",
+      "dropOff": 2749,
+      "dropOffRate": 18.0,
+      "reason": "Page complexity"
+    },
+    {
+      "point": "Form Start to Complete",
+      "dropOff": 7807,
+      "dropOffRate": 62.5,
+      "reason": "Form abandonment"
+    },
+    {
+      "point": "Complete to Submit",
+      "dropOff": 2436,
+      "dropOffRate": 52.1,
+      "reason": "Final hesitation"
+    }
+  ],
+  "fieldInteractions": [
+    {
+      "field": "Email",
+      "interactions": 12234,
+      "errors": 456,
+      "errorRate": 3.7
+    },
+    {
+      "field": "Company Name",
+      "interactions": 11892,
+      "errors": 234,
+      "errorRate": 2.0
+    },
+    {
+      "field": "Phone Number",
+      "interactions": 10456,
+      "errors": 1234,
+      "errorRate": 11.8
+    },
+    {
+      "field": "Industry",
+      "interactions": 9789,
+      "errors": 123,
+      "errorRate": 1.3
+    }
+  ],
+  "deviceBreakdown": {
+    "desktop": { "users": 7491, "completionRate": 54.2 },
+    "mobile": { "users": 3744, "completionRate": 38.5 },
+    "tablet": { "users": 1250, "completionRate": 45.8 }
+  }
+}

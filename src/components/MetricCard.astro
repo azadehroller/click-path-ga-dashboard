@@ -1,0 +1,49 @@
+---
+interface Props {
+  title: string;
+  value: string | number;
+  subtitle?: string;
+  trend?: 'up' | 'down' | 'neutral';
+  trendValue?: string;
+  icon?: string;
+}
+
+const { title, value, subtitle, trend, trendValue, icon } = Astro.props;
+
+const trendColors = {
+  up: 'text-green-600 bg-green-50',
+  down: 'text-red-600 bg-red-50',
+  neutral: 'text-gray-600 bg-gray-50',
+};
+
+const trendIcons = {
+  up: '↑',
+  down: '↓',
+  neutral: '→',
+};
+---
+
+<div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+  <div class="flex items-start justify-between">
+    <div class="flex-1">
+      <p class="text-sm font-medium text-gray-600 uppercase tracking-wide">{title}</p>
+      <p class="mt-2 text-3xl font-bold text-gray-900">{value}</p>
+      {subtitle && (
+        <p class="mt-1 text-sm text-gray-500">{subtitle}</p>
+      )}
+    </div>
+    {icon && (
+      <div class="text-4xl opacity-20">{icon}</div>
+    )}
+  </div>
+  
+  {trend && trendValue && (
+    <div class="mt-4 flex items-center">
+      <span class={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${trendColors[trend]}`}>
+        <span class="mr-1">{trendIcons[trend]}</span>
+        {trendValue}
+      </span>
+      <span class="ml-2 text-xs text-gray-500">vs. last period</span>
+    </div>
+  )}
+</div>

@@ -1,0 +1,120 @@
+{
+  "overview": {
+    "totalUsers": 873743,
+    "formSubmissions": 2242,
+    "conversionRate": 0.26,
+    "dateRange": "Jan 1, 2025 - Sep 25, 2025"
+  },
+  "formSubmissionPaths": [
+    {
+      "step": -5,
+      "topPages": [
+        { "path": "/get-started/", "users": 26 },
+        { "path": "/industries/playground", "users": 20 },
+        { "path": "/features/", "users": 8 },
+        { "path": "/features/digital-waive...", "users": 6 },
+        { "path": "+15 More", "users": 30 }
+      ]
+    },
+    {
+      "step": -4,
+      "topPages": [
+        { "path": "/pricing/", "users": 108 },
+        { "path": "/industries/playground...", "users": 12 },
+        { "path": "/features/", "users": 8 },
+        { "path": "/industries/playground...", "users": 6 },
+        { "path": "/features/digital-waive...", "users": 5 },
+        { "path": "/features/pos/", "users": 5 },
+        { "path": "/industries/playcenter...", "users": 4 },
+        { "path": "/features/online-ticket...", "users": 3 },
+        { "path": "/features/party-booki...", "users": 3 },
+        { "path": "/about-us/", "users": 3 },
+        { "path": "+10 More", "users": 21 }
+      ]
+    },
+    {
+      "step": -3,
+      "topPages": [
+        { "path": "/get-started/", "users": 182 },
+        { "path": "/features/", "users": 98 },
+        { "path": "/industries/playgroun...", "users": 43 },
+        { "path": "/features/digital-waive...", "users": 19 },
+        { "path": "/features/party-booki...", "users": 19 },
+        { "path": "/features/pos/", "users": 15 },
+        { "path": "/industries/family-ente...", "users": 15 },
+        { "path": "/features/membership...", "users": 12 },
+        { "path": "/features/online-ticket...", "users": 10 },
+        { "path": "+10 More", "users": 138 }
+      ]
+    },
+    {
+      "step": -2,
+      "topPages": [
+        { "path": "/pricing/", "users": 667 },
+        { "path": "+10 More", "users": 343 }
+      ]
+    },
+    {
+      "step": -1,
+      "topPages": [
+        { "path": "/get-started/", "users": 2116 },
+        { "path": "/get-started/", "users": 65 },
+        { "path": "+10 More", "users": 102 },
+        { "path": "/get-started/", "users": 142 }
+      ]
+    }
+  ],
+  "keyConversionPaths": [
+    {
+      "path": "/pricing/ → /get-started/ → mql_form_submit",
+      "users": 667,
+      "conversionRate": 29.8
+    },
+    {
+      "path": "/get-started/ → /pricing/ → /get-started/ → mql_form_submit",
+      "users": 182,
+      "conversionRate": 8.1
+    },
+    {
+      "path": "/features/ → /get-started/ → mql_form_submit",
+      "users": 98,
+      "conversionRate": 4.4
+    },
+    {
+      "path": "/pricing/ → /get-started/ (direct) → mql_form_submit",
+      "users": 108,
+      "conversionRate": 4.8
+    },
+    {
+      "path": "/industries/playground → /pricing/ → /get-started/ → mql_form_submit",
+      "users": 20,
+      "conversionRate": 0.9
+    }
+  ],
+  "pageEngagement": [
+    {
+      "page": "/get-started/",
+      "totalVisits": 2116,
+      "leadsToConversion": 2116,
+      "conversionContribution": 94.4
+    },
+    {
+      "page": "/pricing/",
+      "totalVisits": 775,
+      "leadsToConversion": 775,
+      "conversionContribution": 34.6
+    },
+    {
+      "page": "/features/",
+      "totalVisits": 106,
+      "leadsToConversion": 98,
+      "conversionContribution": 4.4
+    },
+    {
+      "page": "/industries/playground",
+      "totalVisits": 75,
+      "leadsToConversion": 43,
+      "conversionContribution": 1.9
+    }
+  ]
+}

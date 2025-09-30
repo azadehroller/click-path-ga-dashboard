@@ -1,0 +1,613 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import MetricCard from '../components/MetricCard.astro';
+import FunnelChart from '../components/FunnelChart';
+import LineChart from '../components/LineChart';
+import DoughnutChart from '../components/DoughnutChart';
+import BarChart from '../components/BarChart';
+import RadarChart from '../components/RadarChart';
+import SankeyFlow from '../components/SankeyFlow';
+import PathExploration from '../components/PathExploration';
+import TabNavigation from '../components/TabNavigation';
+
+import formFlowData from '../data/form-submission-flow.json';
+import getStartedData from '../data/get-started-flow.json';
+import navigationData from '../data/navigation-patterns.json';
+import acquisitionData from '../data/user-acquisition.json';
+import pathExplorationData from '../data/path-exploration.json';
+
+const tabs = [
+  { id: 'overview', label: 'Overview', icon: '📊' },
+  { id: 'conversions', label: 'Form Conversions', icon: '🎯' },
+  { id: 'acquisition', label: 'User Acquisition', icon: '📈' },
+  { id: 'navigation', label: 'Navigation & Engagement', icon: '🌐' },
+  { id: 'get-started', label: 'Get Started Journey', icon: '🚀' },
+];
+---
+
+<Layout title="Roller Analytics Dashboard">
+  <Header />
+  
+  <main class="max-w-[1800px] mx-auto px-6 py-8">
+    <!-- Tab Navigation -->
+    <TabNavigation client:load tabs={tabs} />
+
+    <!-- Tab Content Container -->
+    <div id="tab-content">
+      
+      <!-- OVERVIEW TAB -->
+      <div data-tab="overview" class="tab-content">
+        <section class="mb-8">
+          <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+            <span class="w-1 h-8 bg-blue-600 rounded-full mr-3"></span>
+            Key Performance Metrics
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <MetricCard 
+              title="Total Visitors"
+              value={acquisitionData.overview.totalUsers.toLocaleString()}
+              subtitle="Unique users"
+              trend="up"
+              trendValue="+12.5%"
+              icon="👥"
+            />
+            <MetricCard 
+              title="Form Conversion Rate"
+              value={`${formFlowData.overview.conversionRate}%`}
+              subtitle="Form completions"
+              trend="up"
+              trendValue="+3.2%"
+              icon="📊"
+            />
+            <MetricCard 
+              title="Avg. Session Time"
+              value={navigationData.overview.avgSessionDuration}
+              subtitle="Per session"
+              trend="up"
+              trendValue="+8.7%"
+              icon="⏱️"
+            />
+            <MetricCard 
+              title="Bounce Rate"
+              value={`${navigationData.overview.bounceRate}%`}
+              subtitle="Exit without interaction"
+              trend="down"
+              trendValue="-5.3%"
+              icon="🎯"
+            />
+          </div>
+
+          <!-- Quick Insights Grid -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+            <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl shadow-lg p-6 border-2 border-blue-200">
+              <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center">
+                <span class="text-2xl mr-2">🏆</span>
+                Top Performing Channel
+              </h3>
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-3xl font-bold text-blue-600">Display</p>
+                  <p class="text-sm text-gray-600 mt-1">273,743 users (31.3% of traffic)</p>
+                </div>
+                <div class="text-right">
+                  <p class="text-sm text-gray-500">Conversion Rate</p>
+                  <p class="text-2xl font-bold text-green-600">0.44%</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl shadow-lg p-6 border-2 border-green-200">
+              <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center">
+                <span class="text-2xl mr-2">🎯</span>
+                Best Converting Path
+              </h3>
+              <div>
+                <p class="text-sm text-gray-600 mb-2">Most successful user journey:</p>
+                <p class="text-lg font-semibold text-gray-900">/pricing/ → /get-started/ → Submit</p>
+                <div class="flex items-center justify-between mt-3">
+                  <span class="text-sm text-gray-500">667 users</span>
+                  <span class="text-2xl font-bold text-green-600">29.8% CR</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Top 5 Pages -->
+          <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+            <h3 class="text-lg font-bold text-gray-900 mb-4">Top Performing Pages</h3>
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+              {navigationData.topPages.slice(0, 5).map((page, idx) => (
+                <div class="bg-gray-50 rounded-lg p-4 hover:shadow-md transition-shadow">
+                  <div class="text-xs text-gray-500 mb-1">#{idx + 1}</div>
+                  <div class="font-semibold text-gray-900 text-sm mb-2">{page.page}</div>
+                  <div class="text-2xl font-bold text-blue-600">{page.visits.toLocaleString()}</div>
+                  <div class="text-xs text-gray-500 mt-1">visits</div>
+                  <div class="mt-2 text-xs">
+                    <span class="text-gray-600">Avg. time: </span>
+                    <span class="font-semibold">{page.avgTimeOnPage}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- CONVERSIONS TAB -->
+      <div data-tab="conversions" class="tab-content hidden">
+        <section class="mb-8">
+          <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+            <span class="w-1 h-8 bg-purple-600 rounded-full mr-3"></span>
+            Form Submission Journey
+          </h2>
+          
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+            <MetricCard 
+              title="Form Starts"
+              value={formFlowData.overview.formStarts.toLocaleString()}
+              subtitle={`${((formFlowData.overview.formStarts / formFlowData.overview.totalUsers) * 100).toFixed(1)}% of visitors`}
+              icon="📝"
+            />
+            <MetricCard 
+              title="Completions"
+              value={formFlowData.overview.formCompletions.toLocaleString()}
+              subtitle={`${formFlowData.overview.conversionRate}% conversion`}
+              icon="✅"
+            />
+            <MetricCard 
+              title="Avg. Completion Time"
+              value={formFlowData.overview.averageTimeToComplete}
+              subtitle="From start to submit"
+              icon="⏳"
+            />
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+              <h3 class="text-lg font-bold text-gray-900 mb-4">Conversion Funnel</h3>
+              <div class="h-[400px]">
+                <FunnelChart 
+                  client:load
+                  data={formFlowData.stepByStepFlow}
+                />
+              </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+              <h3 class="text-lg font-bold text-gray-900 mb-4">Device Performance</h3>
+              <div class="h-[400px]">
+                <DoughnutChart 
+                  client:load
+                  data={[
+                    { label: `Desktop (${formFlowData.deviceBreakdown.desktop.completionRate}% CR)`, value: formFlowData.deviceBreakdown.desktop.users },
+                    { label: `Mobile (${formFlowData.deviceBreakdown.mobile.completionRate}% CR)`, value: formFlowData.deviceBreakdown.mobile.users },
+                    { label: `Tablet (${formFlowData.deviceBreakdown.tablet.completionRate}% CR)`, value: formFlowData.deviceBreakdown.tablet.users }
+                  ]}
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 mb-6">
+            <h3 class="text-lg font-bold text-gray-900 mb-4">Drop-off Analysis</h3>
+            <div class="h-[300px]">
+              <BarChart 
+                client:load
+                data={formFlowData.dropOffPoints.map(point => ({
+                  label: point.point.replace(' to ', ' → '),
+                  value: point.dropOff
+                }))}
+                color="rgba(239, 68, 68, 0.8)"
+              />
+            </div>
+          </div>
+
+          <PathExploration 
+            client:load
+            data={pathExplorationData.formSubmissionPaths}
+            endingPoint="mql_form_submit"
+            totalConversions={pathExplorationData.overview.formSubmissions}
+          />
+        </section>
+      </div>
+
+      <!-- ACQUISITION TAB -->
+      <div data-tab="acquisition" class="tab-content hidden">
+        <section class="mb-8">
+          <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+            <span class="w-1 h-8 bg-pink-600 rounded-full mr-3"></span>
+            User Acquisition Channels
+          </h2>
+
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+            <MetricCard 
+              title="New Users"
+              value={acquisitionData.overview.newUsers.toLocaleString()}
+              subtitle={`${acquisitionData.overview.newUserRate}% of total`}
+              icon="🆕"
+            />
+            <MetricCard 
+              title="Returning Users"
+              value={acquisitionData.overview.returningUsers.toLocaleString()}
+              subtitle="Came back"
+              icon="🔁"
+            />
+            <MetricCard 
+              title="Total Users"
+              value={acquisitionData.overview.totalUsers.toLocaleString()}
+              subtitle="All visitors"
+              icon="👥"
+            />
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+              <h3 class="text-lg font-bold text-gray-900 mb-4">Traffic by Channel</h3>
+              <div class="h-[400px]">
+                <DoughnutChart 
+                  client:load
+                  data={acquisitionData.channels.slice(0, 8).map(channel => ({
+                    label: channel.channel,
+                    value: channel.users
+                  }))}
+                />
+              </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+              <h3 class="text-lg font-bold text-gray-900 mb-4">Conversion by Channel</h3>
+              <div class="h-[400px]">
+                <BarChart 
+                  client:load
+                  data={acquisitionData.channels.slice(0, 8).map(channel => ({
+                    label: channel.channel,
+                    value: channel.conversionRate
+                  }))}
+                  color="rgba(236, 72, 153, 0.8)"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+              <h3 class="text-lg font-bold text-gray-900 mb-4">Social Media Performance</h3>
+              <div class="space-y-4">
+                {acquisitionData.socialBreakdown.map((platform) => (
+                  <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:shadow-md transition-shadow">
+                    <div class="flex-1">
+                      <p class="font-semibold text-gray-900">{platform.platform}</p>
+                      <p class="text-sm text-gray-500">{platform.users.toLocaleString()} users</p>
+                    </div>
+                    <div class="text-right">
+                      <p class="text-lg font-bold text-blue-600">{platform.conversionRate}%</p>
+                      <p class="text-xs text-gray-500">conversion</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+              <h3 class="text-lg font-bold text-gray-900 mb-4">Geographic Distribution</h3>
+              <div class="h-[300px]">
+                <BarChart 
+                  client:load
+                  data={acquisitionData.geographicData.map(geo => ({
+                    label: geo.country,
+                    value: geo.users
+                  }))}
+                  color="rgba(99, 102, 241, 0.8)"
+                  horizontal={true}
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+            <h3 class="text-lg font-bold text-gray-900 mb-4">Weekly Traffic Trend</h3>
+            <div class="h-[300px]">
+              <LineChart 
+                client:load
+                data={acquisitionData.trends.weekly.map(week => ({
+                  label: week.week,
+                  value: week.users
+                }))}
+                color="rgb(236, 72, 153)"
+                label="Users"
+              />
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- NAVIGATION TAB -->
+      <div data-tab="navigation" class="tab-content hidden">
+        <section class="mb-8">
+          <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+            <span class="w-1 h-8 bg-orange-600 rounded-full mr-3"></span>
+            Navigation & Engagement
+          </h2>
+
+          <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-6">
+            <MetricCard 
+              title="Total Sessions"
+              value={navigationData.overview.totalSessions.toLocaleString()}
+              subtitle="Unique sessions"
+              icon="🌐"
+            />
+            <MetricCard 
+              title="Pages/Session"
+              value={navigationData.overview.avgPagesPerSession}
+              subtitle="Average views"
+              icon="📄"
+            />
+            <MetricCard 
+              title="Session Duration"
+              value={navigationData.overview.avgSessionDuration}
+              subtitle="Average time"
+              icon="⏰"
+            />
+            <MetricCard 
+              title="Return Rate"
+              value={`${navigationData.overview.returnVisitorRate}%`}
+              subtitle="Returning visitors"
+              icon="🔄"
+            />
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+              <h3 class="text-lg font-bold text-gray-900 mb-4">Top Pages by Traffic</h3>
+              <div class="h-[400px]">
+                <BarChart 
+                  client:load
+                  data={navigationData.topPages.slice(0, 6).map(page => ({
+                    label: page.page,
+                    value: page.visits
+                  }))}
+                  color="rgba(249, 115, 22, 0.8)"
+                />
+              </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+              <h3 class="text-lg font-bold text-gray-900 mb-4">Page Engagement Score</h3>
+              <div class="h-[400px]">
+                <RadarChart 
+                  client:load
+                  data={navigationData.topPages.slice(0, 6).map(page => ({
+                    label: page.page,
+                    value: 100 - page.bounceRate
+                  }))}
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 mb-6">
+            <h3 class="text-lg font-bold text-gray-900 mb-4">User Flow Between Pages</h3>
+            <SankeyFlow 
+              client:load
+              data={navigationData.navigationFlow}
+            />
+          </div>
+
+          <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+            <h3 class="text-lg font-bold text-gray-900 mb-4">High-Converting User Paths</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {navigationData.mostCommonPaths.map((pathData, idx) => (
+                <div class="relative bg-gradient-to-br from-indigo-50 to-purple-50 rounded-lg p-6 border-2 border-indigo-200 hover:shadow-lg transition-shadow">
+                  <div class="absolute top-3 right-3 w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold text-sm">
+                    #{idx + 1}
+                  </div>
+                  <h4 class="font-semibold text-gray-900 mb-3 pr-10">Journey</h4>
+                  <div class="space-y-2 mb-4">
+                    {pathData.path.split(' → ').map((step) => (
+                      <div class="flex items-center">
+                        <div class="w-2 h-2 bg-indigo-600 rounded-full mr-2"></div>
+                        <span class="text-sm text-gray-700">{step}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div class="border-t border-indigo-200 pt-3 flex justify-between">
+                    <div>
+                      <p class="text-xs text-gray-500">Users</p>
+                      <p class="text-lg font-bold text-indigo-600">{pathData.users.toLocaleString()}</p>
+                    </div>
+                    <div class="text-right">
+                      <p class="text-xs text-gray-500">Conv.</p>
+                      <p class="text-lg font-bold text-green-600">{pathData.conversionRate}%</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
+            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+              <h3 class="text-lg font-bold text-gray-900 mb-4">Homepage Scroll Depth</h3>
+              <div class="h-[300px]">
+                <LineChart 
+                  client:load
+                  data={[
+                    { label: '0-25%', value: navigationData.scrollDepth.homepage['0-25%'] },
+                    { label: '25-50%', value: navigationData.scrollDepth.homepage['25-50%'] },
+                    { label: '50-75%', value: navigationData.scrollDepth.homepage['50-75%'] },
+                    { label: '75-100%', value: navigationData.scrollDepth.homepage['75-100%'] }
+                  ]}
+                  color="rgb(249, 115, 22)"
+                  label="Users"
+                />
+              </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+              <h3 class="text-lg font-bold text-gray-900 mb-4">Features Page Scroll</h3>
+              <div class="h-[300px]">
+                <LineChart 
+                  client:load
+                  data={[
+                    { label: '0-25%', value: navigationData.scrollDepth.features['0-25%'] },
+                    { label: '25-50%', value: navigationData.scrollDepth.features['25-50%'] },
+                    { label: '50-75%', value: navigationData.scrollDepth.features['50-75%'] },
+                    { label: '75-100%', value: navigationData.scrollDepth.features['75-100%'] }
+                  ]}
+                  color="rgb(59, 130, 246)"
+                  label="Users"
+                />
+              </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+              <h3 class="text-lg font-bold text-gray-900 mb-4">Pricing Page Scroll</h3>
+              <div class="h-[300px]">
+                <LineChart 
+                  client:load
+                  data={[
+                    { label: '0-25%', value: navigationData.scrollDepth.pricing['0-25%'] },
+                    { label: '25-50%', value: navigationData.scrollDepth.pricing['25-50%'] },
+                    { label: '50-75%', value: navigationData.scrollDepth.pricing['50-75%'] },
+                    { label: '75-100%', value: navigationData.scrollDepth.pricing['75-100%'] }
+                  ]}
+                  color="rgb(139, 92, 246)"
+                  label="Users"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- GET STARTED TAB -->
+      <div data-tab="get-started" class="tab-content hidden">
+        <section class="mb-8">
+          <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+            <span class="w-1 h-8 bg-green-600 rounded-full mr-3"></span>
+            "Get Started" Page Journey
+          </h2>
+
+          <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-6">
+            <MetricCard 
+              title="Page Visits"
+              value={getStartedData.overview.reachedGetStarted.toLocaleString()}
+              subtitle={`${((getStartedData.overview.reachedGetStarted / getStartedData.overview.totalVisitors) * 100).toFixed(1)}% reached`}
+              icon="🚀"
+            />
+            <MetricCard 
+              title="Onboarding Starts"
+              value={getStartedData.overview.startedOnboarding.toLocaleString()}
+              subtitle="User registrations"
+              icon="👤"
+            />
+            <MetricCard 
+              title="Completions"
+              value={getStartedData.overview.completedOnboarding.toLocaleString()}
+              subtitle={`${getStartedData.overview.conversionRate}% conversion`}
+              icon="🎉"
+            />
+            <MetricCard 
+              title="Avg. Time"
+              value={getStartedData.overview.avgTimeToGetStarted}
+              subtitle="To reach page"
+              icon="⌛"
+            />
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+              <h3 class="text-lg font-bold text-gray-900 mb-4">Top Entry Paths</h3>
+              <div class="h-[400px]">
+                <BarChart 
+                  client:load
+                  data={getStartedData.pathAnalysis.map(path => ({
+                    label: path.path.split(' → ')[0],
+                    value: path.users
+                  }))}
+                  color="rgba(34, 197, 94, 0.8)"
+                  horizontal={true}
+                />
+              </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+              <h3 class="text-lg font-bold text-gray-900 mb-4">Conversion Steps</h3>
+              <div class="h-[400px]">
+                <FunnelChart 
+                  client:load
+                  data={getStartedData.userJourneySteps.map(step => ({
+                    step: step.step,
+                    users: step.users,
+                    percentage: step.completionRate
+                  }))}
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+            <h3 class="text-lg font-bold text-gray-900 mb-4">Best Performing CTAs</h3>
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+              {getStartedData.topReferringSections.map((section) => (
+                <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg p-4 border border-blue-200 hover:shadow-lg transition-shadow">
+                  <p class="text-sm font-medium text-gray-600">{section.section}</p>
+                  <p class="text-2xl font-bold text-blue-600 mt-2">{section.conversionRate}%</p>
+                  <p class="text-xs text-gray-500 mt-1">{section.clicks.toLocaleString()} clicks</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </div>
+
+    </div>
+
+    <footer class="mt-12 pt-8 border-t border-gray-200">
+      <div class="text-center text-gray-500 text-sm">
+        <p>Roller Analytics Dashboard • Data updated in real-time</p>
+        <p class="mt-1">© 2025 Roller. All rights reserved.</p>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // Tab switching functionality
+    const tabs = document.querySelectorAll('[data-tab]');
+    
+    function switchTab(tabId: string) {
+      // Hide all tabs
+      tabs.forEach(tab => {
+        tab.classList.add('hidden');
+      });
+      
+      // Show selected tab
+      const selectedTab = document.querySelector(`[data-tab="${tabId}"]`);
+      if (selectedTab) {
+        selectedTab.classList.remove('hidden');
+      }
+      
+      // Update URL hash without scrolling
+      history.pushState(null, '', `#${tabId}`);
+    }
+
+    // Initialize tabs
+    document.addEventListener('DOMContentLoaded', () => {
+      // Get tab from URL hash or default to overview
+      const hash = window.location.hash.slice(1) || 'overview';
+      switchTab(hash);
+      
+      // Listen for custom tab change events from React component
+      document.addEventListener('tabChange', ((e: CustomEvent) => {
+        switchTab(e.detail.tabId);
+      }) as EventListener);
+    });
+
+    // Handle browser back/forward
+    window.addEventListener('hashchange', () => {
+      const hash = window.location.hash.slice(1) || 'overview';
+      switchTab(hash);
+    });
+  </script>
+</Layout>
