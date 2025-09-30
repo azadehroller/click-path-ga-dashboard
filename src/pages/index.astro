@@ -11,6 +11,7 @@ import SankeyFlow from '../components/SankeyFlow';
 import PathExploration from '../components/PathExploration';
 import TabNavigation from '../components/TabNavigation';
 import ComparisonSelector from '../components/ComparisonSelector';
+import UserJourneyFlow from '../components/UserJourneyFlow';
 
 import formFlowData from '../data/form-submission-flow.json';
 import getStartedData from '../data/get-started-flow.json';
@@ -77,6 +78,18 @@ const tabs = [
               trend="down"
               trendValue="-5.3%"
               icon="🎯"
+            />
+          </div>
+
+          <!-- User Journey Distribution -->
+          <div class="mb-6">
+            <UserJourneyFlow 
+              client:load
+              paths={navigationData.mostCommonPaths.map(path => ({
+                label: path.path,
+                value: path.users
+              }))}
+              totalUsers={navigationData.mostCommonPaths.reduce((sum, path) => sum + path.users, 0)}
             />
           </div>
 
