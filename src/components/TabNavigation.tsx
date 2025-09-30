@@ -42,7 +42,7 @@ export default function TabNavigation({ tabs, activeTab: initialTab, onTabChange
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-lg border border-gray-200 mb-8 sticky top-[72px] z-40">
+    <div className="bg-white rounded-xl shadow-lg border border-gray-200 mb-8 sticky top-[96px] z-40">
       <div className="flex overflow-x-auto scrollbar-hide">
         {tabs.map((tab) => (
           <button

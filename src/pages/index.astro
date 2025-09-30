@@ -10,6 +10,7 @@ import RadarChart from '../components/RadarChart';
 import SankeyFlow from '../components/SankeyFlow';
 import PathExploration from '../components/PathExploration';
 import TabNavigation from '../components/TabNavigation';
+import ComparisonSelector from '../components/ComparisonSelector';
 
 import formFlowData from '../data/form-submission-flow.json';
 import getStartedData from '../data/get-started-flow.json';
@@ -22,7 +23,8 @@ const tabs = [
   { id: 'conversions', label: 'Form Conversions', icon: '🎯' },
   { id: 'acquisition', label: 'User Acquisition', icon: '📈' },
   { id: 'navigation', label: 'Navigation & Engagement', icon: '🌐' },
-  { id: 'get-started', label: 'Get Started Journey', icon: '🚀' },
+  { id: 'get-started', label: '"Get Started" Page Journey', icon: '🚀' },
+  { id: 'comparison', label: 'Compare Metrics', icon: '⚖️' },
 ];
 ---
 
@@ -163,6 +165,13 @@ const tabs = [
             />
           </div>
 
+          <PathExploration 
+            client:load
+            data={pathExplorationData.formSubmissionPaths}
+            endingPoint="mql_form_submit"
+            totalConversions={pathExplorationData.overview.formSubmissions}
+          />
+
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
             <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
               <h3 class="text-lg font-bold text-gray-900 mb-4">Conversion Funnel</h3>
@@ -203,12 +212,35 @@ const tabs = [
             </div>
           </div>
 
-          <PathExploration 
-            client:load
-            data={pathExplorationData.formSubmissionPaths}
-            endingPoint="mql_form_submit"
-            totalConversions={pathExplorationData.overview.formSubmissions}
-          />
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+              <h3 class="text-lg font-bold text-gray-900 mb-4">Form Field Error Rates</h3>
+              <div class="h-[300px]">
+                <BarChart 
+                  client:load
+                  data={formFlowData.fieldInteractions.map(field => ({
+                    label: field.field,
+                    value: field.errorRate
+                  }))}
+                  color="rgba(239, 68, 68, 0.8)"
+                />
+              </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+              <h3 class="text-lg font-bold text-gray-900 mb-4">Field Completion Funnel</h3>
+              <div class="h-[300px]">
+                <BarChart 
+                  client:load
+                  data={formFlowData.fieldInteractions.map(field => ({
+                    label: field.field,
+                    value: field.interactions
+                  }))}
+                  color="rgba(59, 130, 246, 0.8)"
+                />
+              </div>
+            </div>
+          </div>
         </section>
       </div>
 
@@ -305,7 +337,7 @@ const tabs = [
             </div>
           </div>
 
-          <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+          <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 mb-6">
             <h3 class="text-lg font-bold text-gray-900 mb-4">Weekly Traffic Trend</h3>
             <div class="h-[300px]">
               <LineChart 
@@ -317,6 +349,73 @@ const tabs = [
                 color="rgb(236, 72, 153)"
                 label="Users"
               />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+              <h3 class="text-lg font-bold text-gray-900 mb-4">Top Referrer Websites</h3>
+              <div class="h-[300px]">
+                <BarChart 
+                  client:load
+                  data={acquisitionData.topReferrers.map(referrer => ({
+                    label: referrer.source,
+                    value: referrer.conversionRate
+                  }))}
+                  color="rgba(99, 102, 241, 0.8)"
+                />
+              </div>
+              <div class="mt-4 space-y-2">
+                {acquisitionData.topReferrers.map((referrer) => (
+                  <div class="flex justify-between items-center text-sm">
+                    <span class="text-gray-600">{referrer.source}</span>
+                    <span class="font-semibold text-gray-900">{referrer.users.toLocaleString()} users</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+              <h3 class="text-lg font-bold text-gray-900 mb-4">Channel Performance Radar</h3>
+              <div class="h-[400px]">
+                <RadarChart 
+                  client:load
+                  data={acquisitionData.channels.slice(0, 6).map(channel => ({
+                    label: channel.channel,
+                    value: channel.conversionRate * 10
+                  }))}
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+              <h3 class="text-lg font-bold text-gray-900 mb-4">Bounce Rate by Channel</h3>
+              <div class="h-[350px]">
+                <BarChart 
+                  client:load
+                  data={acquisitionData.channels.slice(0, 8).map(channel => ({
+                    label: channel.channel,
+                    value: channel.bounceRate
+                  }))}
+                  color="rgba(239, 68, 68, 0.8)"
+                />
+              </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+              <h3 class="text-lg font-bold text-gray-900 mb-4">Avg Session Duration by Channel</h3>
+              <div class="h-[350px]">
+                <BarChart 
+                  client:load
+                  data={acquisitionData.channels.slice(0, 8).map(channel => ({
+                    label: channel.channel,
+                    value: parseFloat(channel.avgSessionDuration.replace('m ', '.').replace('s', ''))
+                  }))}
+                  color="rgba(34, 197, 94, 0.8)"
+                />
+              </div>
             </div>
           </div>
         </section>
@@ -478,6 +577,37 @@ const tabs = [
               </div>
             </div>
           </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
+            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+              <h3 class="text-lg font-bold text-gray-900 mb-4">Click Heatmap - Most Clicked Elements</h3>
+              <div class="h-[350px]">
+                <BarChart 
+                  client:load
+                  data={navigationData.clickHeatmap.map(item => ({
+                    label: item.element,
+                    value: item.clicks
+                  }))}
+                  color="rgba(249, 115, 22, 0.8)"
+                  horizontal={true}
+                />
+              </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+              <h3 class="text-lg font-bold text-gray-900 mb-4">Exit Rate by Page</h3>
+              <div class="h-[350px]">
+                <BarChart 
+                  client:load
+                  data={navigationData.topPages.map(page => ({
+                    label: page.page,
+                    value: page.exitRate
+                  }))}
+                  color="rgba(239, 68, 68, 0.8)"
+                />
+              </div>
+            </div>
+          </div>
         </section>
       </div>
 
@@ -547,7 +677,7 @@ const tabs = [
             </div>
           </div>
 
-          <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+          <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 mb-6">
             <h3 class="text-lg font-bold text-gray-900 mb-4">Best Performing CTAs</h3>
             <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
               {getStartedData.topReferringSections.map((section) => (
@@ -558,6 +688,177 @@ const tabs = [
                 </div>
               ))}
             </div>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+              <h3 class="text-lg font-bold text-gray-900 mb-4">Time to Conversion Distribution</h3>
+              <div class="h-[350px]">
+                <DoughnutChart 
+                  client:load
+                  data={getStartedData.timeToConversion.map(item => ({
+                    label: `${item.range} (${item.percentage}%)`,
+                    value: item.users
+                  }))}
+                />
+              </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+              <h3 class="text-lg font-bold text-gray-900 mb-4">Average Journey Time by Entry Path</h3>
+              <div class="h-[350px]">
+                <BarChart 
+                  client:load
+                  data={getStartedData.pathAnalysis.map(path => ({
+                    label: path.path.split(' → ')[0],
+                    value: parseFloat(path.avgTime.replace('m ', '.').replace('s', ''))
+                  }))}
+                  color="rgba(34, 197, 94, 0.8)"
+                  horizontal={true}
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- COMPARISON TAB -->
+      <div data-tab="comparison" class="tab-content hidden">
+        <section class="mb-8">
+          <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+            <span class="w-1 h-8 bg-violet-600 rounded-full mr-3"></span>
+            Compare Metrics
+          </h2>
+
+          <div class="grid grid-cols-1 gap-6 mb-6">
+            <!-- Channel Comparison -->
+            <ComparisonSelector
+              client:load
+              title="🔄 Channel Comparison"
+              items={acquisitionData.channels.slice(0, 10).map(channel => ({
+                id: channel.channel,
+                label: channel.channel,
+                metrics: {
+                  users: channel.users,
+                  conversionRate: channel.conversionRate,
+                  bounceRate: channel.bounceRate,
+                  avgSessionDuration: parseFloat(channel.avgSessionDuration.replace('m ', '.').replace('s', '')),
+                  newUsers: channel.newUsers,
+                  returningUsers: channel.returningUsers
+                }
+              }))}
+              metricDefinitions={[
+                { key: 'users', label: 'Total Users', format: 'number' },
+                { key: 'conversionRate', label: 'Conversion Rate', format: 'percentage' },
+                { key: 'bounceRate', label: 'Bounce Rate', format: 'percentage' },
+                { key: 'avgSessionDuration', label: 'Avg Session Duration (min)', format: 'number' },
+                { key: 'newUsers', label: 'New Users', format: 'number' },
+                { key: 'returningUsers', label: 'Returning Users', format: 'number' }
+              ]}
+              maxSelections={6}
+            />
+
+            <!-- Page Performance Comparison -->
+            <ComparisonSelector
+              client:load
+              title="📄 Page Performance Comparison"
+              items={navigationData.topPages.map(page => ({
+                id: page.page,
+                label: page.page,
+                metrics: {
+                  visits: page.visits,
+                  bounceRate: page.bounceRate,
+                  exitRate: page.exitRate,
+                  avgTimeOnPage: parseFloat(page.avgTimeOnPage.replace('m ', '.').replace('s', ''))
+                }
+              }))}
+              metricDefinitions={[
+                { key: 'visits', label: 'Total Visits', format: 'number' },
+                { key: 'bounceRate', label: 'Bounce Rate', format: 'percentage' },
+                { key: 'exitRate', label: 'Exit Rate', format: 'percentage' },
+                { key: 'avgTimeOnPage', label: 'Avg Time on Page (min)', format: 'number' }
+              ]}
+              maxSelections={6}
+            />
+
+            <!-- Device Comparison -->
+            <ComparisonSelector
+              client:load
+              title="📱 Device Performance Comparison"
+              items={[
+                {
+                  id: 'desktop',
+                  label: 'Desktop',
+                  metrics: {
+                    users: formFlowData.deviceBreakdown.desktop.users,
+                    completionRate: formFlowData.deviceBreakdown.desktop.completionRate
+                  }
+                },
+                {
+                  id: 'mobile',
+                  label: 'Mobile',
+                  metrics: {
+                    users: formFlowData.deviceBreakdown.mobile.users,
+                    completionRate: formFlowData.deviceBreakdown.mobile.completionRate
+                  }
+                },
+                {
+                  id: 'tablet',
+                  label: 'Tablet',
+                  metrics: {
+                    users: formFlowData.deviceBreakdown.tablet.users,
+                    completionRate: formFlowData.deviceBreakdown.tablet.completionRate
+                  }
+                }
+              ]}
+              metricDefinitions={[
+                { key: 'users', label: 'Total Users', format: 'number' },
+                { key: 'completionRate', label: 'Completion Rate', format: 'percentage' }
+              ]}
+              maxSelections={3}
+            />
+
+            <!-- Geographic Comparison -->
+            <ComparisonSelector
+              client:load
+              title="🌍 Geographic Performance Comparison"
+              items={acquisitionData.geographicData.map(geo => ({
+                id: geo.country,
+                label: geo.country,
+                metrics: {
+                  users: geo.users,
+                  percentage: geo.percentage,
+                  conversionRate: geo.conversionRate
+                }
+              }))}
+              metricDefinitions={[
+                { key: 'users', label: 'Total Users', format: 'number' },
+                { key: 'percentage', label: 'Traffic Share', format: 'percentage' },
+                { key: 'conversionRate', label: 'Conversion Rate', format: 'percentage' }
+              ]}
+              maxSelections={6}
+            />
+
+            <!-- Social Platform Comparison -->
+            <ComparisonSelector
+              client:load
+              title="📱 Social Platform Comparison"
+              items={acquisitionData.socialBreakdown.map(platform => ({
+                id: platform.platform,
+                label: platform.platform,
+                metrics: {
+                  users: platform.users,
+                  conversionRate: platform.conversionRate,
+                  engagement: platform.engagement
+                }
+              }))}
+              metricDefinitions={[
+                { key: 'users', label: 'Total Users', format: 'number' },
+                { key: 'conversionRate', label: 'Conversion Rate', format: 'percentage' },
+                { key: 'engagement', label: 'Engagement Level', format: 'text' }
+              ]}
+              maxSelections={4}
+            />
           </div>
         </section>
       </div>
