@@ -37,7 +37,7 @@ export default function FunnelChart({ data, title }: Props) {
           label: 'Users',
           data: data.map(d => d.users),
           backgroundColor: [
-            'rgba(59, 130, 246, 0.8)',
+            'rgba(3, 49, 128, 0.8)',
             'rgba(99, 102, 241, 0.8)',
             'rgba(139, 92, 246, 0.8)',
             'rgba(168, 85, 247, 0.8)',
@@ -45,7 +45,7 @@ export default function FunnelChart({ data, title }: Props) {
             'rgba(236, 72, 153, 0.8)',
           ],
           borderColor: [
-            'rgb(59, 130, 246)',
+            'rgb(3, 49, 128)',
             'rgb(99, 102, 241)',
             'rgb(139, 92, 246)',
             'rgb(168, 85, 247)',

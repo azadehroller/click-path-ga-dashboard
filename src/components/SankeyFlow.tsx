@@ -38,14 +38,14 @@ export default function SankeyFlow({ data, title }: Props) {
                 <span className="font-medium text-gray-700">{flow.from}</span>
                 <span className="text-gray-500">→</span>
                 <span className="font-medium text-gray-700">{flow.to}</span>
-                <span className="text-blue-600 font-semibold">{flow.users.toLocaleString()}</span>
+                <span className="font-semibold" style={{ color: '#033180' }}>{flow.users.toLocaleString()}</span>
               </div>
               <div className="w-full bg-gray-100 rounded-full h-2.5 relative overflow-visible">
                 <div 
-                  className={`bg-gradient-to-r from-blue-500 to-indigo-500 h-2.5 rounded-full transition-all duration-500 ${
+                  className={`h-2.5 rounded-full transition-all duration-500 ${
                     isHovered ? 'shadow-lg scale-y-125' : ''
                   }`}
-                  style={{ width: `${widthPercent}%` }}
+                  style={{ width: `${widthPercent}%`, background: 'linear-gradient(to right, #033180, #022456)' }}
                 />
                 {isHovered && (
                   <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white px-3 py-2 rounded-lg text-xs whitespace-nowrap shadow-xl z-10">

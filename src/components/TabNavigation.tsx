@@ -44,17 +44,20 @@ export default function TabNavigation({ tabs, activeTab: initialTab, onTabChange
   return (
     <div className="bg-white rounded-xl shadow-lg border border-gray-200 mb-8 sticky top-[96px] z-40">
       <div className="flex overflow-x-auto scrollbar-hide">
-        {tabs.map((tab) => (
+        {tabs.map((tab, index) => (
           <button
             key={tab.id}
             onClick={() => handleTabClick(tab.id)}
             className={`
               flex items-center gap-2 px-6 py-4 font-semibold text-sm whitespace-nowrap transition-all border-b-4 min-w-fit
+              ${index === 0 ? 'rounded-tl-xl rounded-bl-xl' : ''}
+              ${index === tabs.length - 1 ? 'rounded-tr-xl rounded-br-xl' : ''}
               ${activeTab === tab.id 
-                ? 'border-blue-600 text-blue-600 bg-blue-50' 
+                ? 'border-transparent text-white bg-opacity-90' 
                 : 'border-transparent text-gray-600 hover:text-gray-900 hover:bg-gray-50'
               }
             `}
+            style={activeTab === tab.id ? { backgroundColor: '#033180', borderBottomColor: '#033180' } : undefined}
           >
             <span className="text-xl">{tab.icon}</span>
             <span>{tab.label}</span>

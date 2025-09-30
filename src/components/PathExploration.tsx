@@ -27,13 +27,13 @@ export default function PathExploration({ data, endingPoint, totalConversions }:
           {data.map((stepData, idx) => (
             <React.Fragment key={idx}>
               <div className="flex flex-col items-center">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center text-white font-bold shadow-lg z-10">
+                <div className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold shadow-lg z-10" style={{ background: 'linear-gradient(to bottom right, #033180, #022456)' }}>
                   {stepData.step}
                 </div>
                 <span className="text-xs text-gray-500 mt-2 font-medium">STEP {stepData.step}</span>
               </div>
               {idx < data.length - 1 && (
-                <div className="flex-1 h-1 bg-gradient-to-r from-blue-400 to-indigo-400 mx-2"></div>
+                <div className="flex-1 h-1 mx-2" style={{ background: 'linear-gradient(to right, #4d6fa8, #5876b3)' }}></div>
               )}
             </React.Fragment>
           ))}
@@ -58,7 +58,7 @@ export default function PathExploration({ data, endingPoint, totalConversions }:
                   return (
                     <div key={pageIdx}>
                       <div className="flex items-center justify-between text-xs mb-1">
-                        <span className={`truncate flex-1 ${isMoreItem ? 'text-blue-600 font-medium' : 'text-gray-600'}`} title={page.path}>
+                        <span className={`truncate flex-1 ${isMoreItem ? 'font-medium' : 'text-gray-600'}`} style={isMoreItem ? { color: '#033180' } : undefined} title={page.path}>
                           {page.path}
                         </span>
                         <span className="text-gray-900 font-semibold ml-2">{page.users}</span>
@@ -66,9 +66,12 @@ export default function PathExploration({ data, endingPoint, totalConversions }:
                       <div className="w-full bg-gray-200 rounded-full h-1.5">
                         <div 
                           className={`h-1.5 rounded-full transition-all duration-500 ${
-                            isMoreItem ? 'bg-blue-400' : 'bg-gradient-to-r from-blue-500 to-indigo-500'
+                            ''
                           }`}
-                          style={{ width: `${widthPercent}%` }}
+                          style={{ 
+                            width: `${widthPercent}%`,
+                            background: isMoreItem ? '#4d6fa8' : 'linear-gradient(to right, #033180, #022456)'
+                          }}
                         />
                       </div>
                     </div>

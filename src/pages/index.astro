@@ -42,7 +42,7 @@ const tabs = [
       <div data-tab="overview" class="tab-content">
         <section class="mb-8">
           <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-            <span class="w-1 h-8 bg-blue-600 rounded-full mr-3"></span>
+            <span class="w-1 h-8 rounded-full mr-3" style="background-color: #033180;"></span>
             Key Performance Metrics
           </h2>
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
@@ -82,14 +82,14 @@ const tabs = [
 
           <!-- Quick Insights Grid -->
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-            <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl shadow-lg p-6 border-2 border-blue-200">
+            <div class="rounded-xl shadow-lg p-6 border-2" style="background: linear-gradient(to bottom right, #e6eef9, #f0f4ff); border-color: #b3cce6;">
               <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center">
                 <span class="text-2xl mr-2">🏆</span>
                 Top Performing Channel
               </h3>
               <div class="flex items-center justify-between">
                 <div>
-                  <p class="text-3xl font-bold text-blue-600">Display</p>
+                  <p class="text-3xl font-bold" style="color: #033180;">Display</p>
                   <p class="text-sm text-gray-600 mt-1">273,743 users (31.3% of traffic)</p>
                 </div>
                 <div class="text-right">
@@ -123,7 +123,7 @@ const tabs = [
                 <div class="bg-gray-50 rounded-lg p-4 hover:shadow-md transition-shadow">
                   <div class="text-xs text-gray-500 mb-1">#{idx + 1}</div>
                   <div class="font-semibold text-gray-900 text-sm mb-2">{page.page}</div>
-                  <div class="text-2xl font-bold text-blue-600">{page.visits.toLocaleString()}</div>
+                  <div class="text-2xl font-bold" style="color: #033180;">{page.visits.toLocaleString()}</div>
                   <div class="text-xs text-gray-500 mt-1">visits</div>
                   <div class="mt-2 text-xs">
                     <span class="text-gray-600">Avg. time: </span>
@@ -207,7 +207,7 @@ const tabs = [
                   label: point.point.replace(' to ', ' → '),
                   value: point.dropOff
                 }))}
-                color="rgba(239, 68, 68, 0.8)"
+                color="rgba(255, 41, 12, 0.8)"
               />
             </div>
           </div>
@@ -222,7 +222,7 @@ const tabs = [
                     label: field.field,
                     value: field.errorRate
                   }))}
-                  color="rgba(239, 68, 68, 0.8)"
+                  color="rgba(255, 41, 12, 0.8)"
                 />
               </div>
             </div>
@@ -236,7 +236,7 @@ const tabs = [
                     label: field.field,
                     value: field.interactions
                   }))}
-                  color="rgba(59, 130, 246, 0.8)"
+                  color="rgba(3, 49, 128, 0.8)"
                 />
               </div>
             </div>
@@ -313,7 +313,7 @@ const tabs = [
                       <p class="text-sm text-gray-500">{platform.users.toLocaleString()} users</p>
                     </div>
                     <div class="text-right">
-                      <p class="text-lg font-bold text-blue-600">{platform.conversionRate}%</p>
+                      <p class="text-lg font-bold" style="color: #033180;">{platform.conversionRate}%</p>
                       <p class="text-xs text-gray-500">conversion</p>
                     </div>
                   </div>
@@ -399,7 +399,7 @@ const tabs = [
                     label: channel.channel,
                     value: channel.bounceRate
                   }))}
-                  color="rgba(239, 68, 68, 0.8)"
+                  color="rgba(255, 41, 12, 0.8)"
                 />
               </div>
             </div>
@@ -554,7 +554,7 @@ const tabs = [
                     { label: '50-75%', value: navigationData.scrollDepth.features['50-75%'] },
                     { label: '75-100%', value: navigationData.scrollDepth.features['75-100%'] }
                   ]}
-                  color="rgb(59, 130, 246)"
+                  color="rgb(3, 49, 128)"
                   label="Users"
                 />
               </div>
@@ -603,7 +603,7 @@ const tabs = [
                     label: page.page,
                     value: page.exitRate
                   }))}
-                  color="rgba(239, 68, 68, 0.8)"
+                  color="rgba(255, 41, 12, 0.8)"
                 />
               </div>
             </div>
@@ -681,9 +681,9 @@ const tabs = [
             <h3 class="text-lg font-bold text-gray-900 mb-4">Best Performing CTAs</h3>
             <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
               {getStartedData.topReferringSections.map((section) => (
-                <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg p-4 border border-blue-200 hover:shadow-lg transition-shadow">
+                <div class="rounded-lg p-4 border hover:shadow-lg transition-shadow" style="background: linear-gradient(to bottom right, #e6eef9, #f0f4ff); border-color: #b3cce6;">
                   <p class="text-sm font-medium text-gray-600">{section.section}</p>
-                  <p class="text-2xl font-bold text-blue-600 mt-2">{section.conversionRate}%</p>
+                  <p class="text-2xl font-bold mt-2" style="color: #033180;">{section.conversionRate}%</p>
                   <p class="text-xs text-gray-500 mt-1">{section.clicks.toLocaleString()} clicks</p>
                 </div>
               ))}

@@ -64,12 +64,12 @@ export default function ComparisonSelector({ title, items, metricDefinitions, ma
 
   const getChartColor = (index: number) => {
     const colors = [
-      'rgba(59, 130, 246, 0.8)',   // Blue
+      'rgba(3, 49, 128, 0.8)',     // Blue
       'rgba(236, 72, 153, 0.8)',   // Pink
       'rgba(34, 197, 94, 0.8)',    // Green
       'rgba(249, 115, 22, 0.8)',   // Orange
       'rgba(139, 92, 246, 0.8)',   // Purple
-      'rgba(239, 68, 68, 0.8)',    // Red
+      'rgba(255, 41, 12, 0.8)',    // Red
     ];
     return colors[index % colors.length];
   };
@@ -90,9 +90,10 @@ export default function ComparisonSelector({ title, items, metricDefinitions, ma
               onClick={() => toggleSelection(item.id)}
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                 selectedIds.includes(item.id)
-                  ? 'bg-blue-600 text-white shadow-md'
+                  ? 'text-white shadow-md'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
+              style={selectedIds.includes(item.id) ? { backgroundColor: '#033180' } : undefined}
             >
               {item.label}
             </button>
@@ -108,9 +109,10 @@ export default function ComparisonSelector({ title, items, metricDefinitions, ma
               onClick={() => setViewMode('table')}
               className={`px-4 py-2 text-sm font-medium transition-colors border-b-2 ${
                 viewMode === 'table'
-                  ? 'border-blue-600 text-blue-600'
+                  ? 'border-transparent'
                   : 'border-transparent text-gray-600 hover:text-gray-900'
               }`}
+              style={viewMode === 'table' ? { borderBottomColor: '#033180', color: '#033180' } : undefined}
             >
               📋 Table View
             </button>
@@ -118,9 +120,10 @@ export default function ComparisonSelector({ title, items, metricDefinitions, ma
               onClick={() => setViewMode('chart')}
               className={`px-4 py-2 text-sm font-medium transition-colors border-b-2 ${
                 viewMode === 'chart'
-                  ? 'border-blue-600 text-blue-600'
+                  ? 'border-transparent'
                   : 'border-transparent text-gray-600 hover:text-gray-900'
               }`}
+              style={viewMode === 'chart' ? { borderBottomColor: '#033180', color: '#033180' } : undefined}
             >
               📊 Chart View
             </button>
@@ -128,9 +131,10 @@ export default function ComparisonSelector({ title, items, metricDefinitions, ma
               onClick={() => setViewMode('radar')}
               className={`px-4 py-2 text-sm font-medium transition-colors border-b-2 ${
                 viewMode === 'radar'
-                  ? 'border-blue-600 text-blue-600'
+                  ? 'border-transparent'
                   : 'border-transparent text-gray-600 hover:text-gray-900'
               }`}
+              style={viewMode === 'radar' ? { borderBottomColor: '#033180', color: '#033180' } : undefined}
             >
               🎯 Radar View
             </button>
@@ -182,7 +186,7 @@ export default function ComparisonSelector({ title, items, metricDefinitions, ma
                         label: item.label,
                         value: Number(item.metrics[metric.key])
                       }))}
-                      color="rgba(59, 130, 246, 0.8)"
+                      color="rgba(3, 49, 128, 0.8)"
                     />
                   </div>
                 </div>

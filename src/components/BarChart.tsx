@@ -15,7 +15,7 @@ interface Props {
   horizontal?: boolean;
 }
 
-export default function BarChart({ data, title, color = 'rgba(59, 130, 246, 0.8)', horizontal = false }: Props) {
+export default function BarChart({ data, title, color = 'rgba(3, 49, 128, 0.8)', horizontal = false }: Props) {
   const chartRef = useRef<HTMLCanvasElement>(null);
   const chartInstance = useRef<Chart | null>(null);
 

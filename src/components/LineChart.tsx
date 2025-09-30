@@ -15,7 +15,7 @@ interface Props {
   label?: string;
 }
 
-export default function LineChart({ data, title, color = 'rgb(59, 130, 246)', label = 'Value' }: Props) {
+export default function LineChart({ data, title, color = 'rgb(3, 49, 128)', label = 'Value' }: Props) {
   const chartRef = useRef<HTMLCanvasElement>(null);
   const chartInstance = useRef<Chart | null>(null);
 
