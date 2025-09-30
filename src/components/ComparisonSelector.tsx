@@ -75,7 +75,7 @@ export default function ComparisonSelector({ title, items, metricDefinitions, ma
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+    <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
       <div className="mb-6">
         <h3 className="text-lg font-bold text-gray-900 mb-2">{title}</h3>
         <p className="text-sm text-gray-500">Select up to {maxSelections} items to compare</p>
@@ -177,7 +177,7 @@ export default function ComparisonSelector({ title, items, metricDefinitions, ma
           {viewMode === 'chart' && (
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {metricDefinitions.filter(m => typeof selectedItems[0].metrics[m.key] === 'number').map((metric) => (
-                <div key={metric.key} className="bg-gray-50 rounded-lg p-4">
+                <div key={metric.key} className="bg-gray-50 rounded-lg p-4 hover:shadow-md transition-shadow duration-300">
                   <h4 className="text-sm font-semibold text-gray-900 mb-4">{metric.label}</h4>
                   <div className="h-[250px]">
                     <BarChart

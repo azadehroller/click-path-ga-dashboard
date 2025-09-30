@@ -82,7 +82,7 @@ const tabs = [
 
           <!-- Quick Insights Grid -->
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-            <div class="rounded-xl shadow-lg p-6 border-2" style="background: linear-gradient(to bottom right, #e6eef9, #f0f4ff); border-color: #b3cce6;">
+            <div class="rounded-xl shadow-lg p-6 border-2 hover:shadow-xl transition-shadow duration-300" style="background: linear-gradient(to bottom right, #e6eef9, #f0f4ff); border-color: #b3cce6;">
               <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center">
                 <span class="text-2xl mr-2">🏆</span>
                 Top Performing Channel
@@ -99,7 +99,7 @@ const tabs = [
               </div>
             </div>
 
-            <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl shadow-lg p-6 border-2 border-green-200">
+            <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl shadow-lg p-6 border-2 border-green-200 hover:shadow-xl transition-shadow duration-300">
               <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center">
                 <span class="text-2xl mr-2">🎯</span>
                 Best Converting Path
@@ -116,7 +116,7 @@ const tabs = [
           </div>
 
           <!-- Top 5 Pages -->
-          <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+          <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
             <h3 class="text-lg font-bold text-gray-900 mb-4">Top Performing Pages</h3>
             <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
               {navigationData.topPages.slice(0, 5).map((page, idx) => (
@@ -165,15 +165,17 @@ const tabs = [
             />
           </div>
 
-          <PathExploration 
-            client:load
-            data={pathExplorationData.formSubmissionPaths}
-            endingPoint="mql_form_submit"
-            totalConversions={pathExplorationData.overview.formSubmissions}
-          />
+          <div class="mb-6">
+            <PathExploration 
+              client:load
+              data={pathExplorationData.formSubmissionPaths}
+              endingPoint="mql_form_submit"
+              totalConversions={pathExplorationData.overview.formSubmissions}
+            />
+          </div>
 
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
               <h3 class="text-lg font-bold text-gray-900 mb-4">Conversion Funnel</h3>
               <div class="h-[400px]">
                 <FunnelChart 
@@ -183,7 +185,7 @@ const tabs = [
               </div>
             </div>
 
-            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
               <h3 class="text-lg font-bold text-gray-900 mb-4">Device Performance</h3>
               <div class="h-[400px]">
                 <DoughnutChart 
@@ -198,7 +200,7 @@ const tabs = [
             </div>
           </div>
 
-          <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 mb-6">
+          <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 mb-6 hover:shadow-xl transition-shadow duration-300">
             <h3 class="text-lg font-bold text-gray-900 mb-4">Drop-off Analysis</h3>
             <div class="h-[300px]">
               <BarChart 
@@ -213,7 +215,7 @@ const tabs = [
           </div>
 
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
               <h3 class="text-lg font-bold text-gray-900 mb-4">Form Field Error Rates</h3>
               <div class="h-[300px]">
                 <BarChart 
@@ -227,7 +229,7 @@ const tabs = [
               </div>
             </div>
 
-            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
               <h3 class="text-lg font-bold text-gray-900 mb-4">Field Completion Funnel</h3>
               <div class="h-[300px]">
                 <BarChart 
@@ -274,7 +276,7 @@ const tabs = [
           </div>
 
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
               <h3 class="text-lg font-bold text-gray-900 mb-4">Traffic by Channel</h3>
               <div class="h-[400px]">
                 <DoughnutChart 
@@ -287,7 +289,7 @@ const tabs = [
               </div>
             </div>
 
-            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
               <h3 class="text-lg font-bold text-gray-900 mb-4">Conversion by Channel</h3>
               <div class="h-[400px]">
                 <BarChart 
@@ -303,7 +305,7 @@ const tabs = [
           </div>
 
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
               <h3 class="text-lg font-bold text-gray-900 mb-4">Social Media Performance</h3>
               <div class="space-y-4">
                 {acquisitionData.socialBreakdown.map((platform) => (
@@ -321,7 +323,7 @@ const tabs = [
               </div>
             </div>
 
-            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
               <h3 class="text-lg font-bold text-gray-900 mb-4">Geographic Distribution</h3>
               <div class="h-[300px]">
                 <BarChart 
@@ -337,7 +339,7 @@ const tabs = [
             </div>
           </div>
 
-          <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 mb-6">
+          <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 mb-6 hover:shadow-xl transition-shadow duration-300">
             <h3 class="text-lg font-bold text-gray-900 mb-4">Weekly Traffic Trend</h3>
             <div class="h-[300px]">
               <LineChart 
@@ -353,7 +355,7 @@ const tabs = [
           </div>
 
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
               <h3 class="text-lg font-bold text-gray-900 mb-4">Top Referrer Websites</h3>
               <div class="h-[300px]">
                 <BarChart 
@@ -375,7 +377,7 @@ const tabs = [
               </div>
             </div>
 
-            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
               <h3 class="text-lg font-bold text-gray-900 mb-4">Channel Performance Radar</h3>
               <div class="h-[400px]">
                 <RadarChart 
@@ -390,7 +392,7 @@ const tabs = [
           </div>
 
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
               <h3 class="text-lg font-bold text-gray-900 mb-4">Bounce Rate by Channel</h3>
               <div class="h-[350px]">
                 <BarChart 
@@ -404,7 +406,7 @@ const tabs = [
               </div>
             </div>
 
-            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
               <h3 class="text-lg font-bold text-gray-900 mb-4">Avg Session Duration by Channel</h3>
               <div class="h-[350px]">
                 <BarChart 
@@ -457,7 +459,7 @@ const tabs = [
           </div>
 
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
               <h3 class="text-lg font-bold text-gray-900 mb-4">Top Pages by Traffic</h3>
               <div class="h-[400px]">
                 <BarChart 
@@ -471,7 +473,7 @@ const tabs = [
               </div>
             </div>
 
-            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
               <h3 class="text-lg font-bold text-gray-900 mb-4">Page Engagement Score</h3>
               <div class="h-[400px]">
                 <RadarChart 
@@ -485,7 +487,7 @@ const tabs = [
             </div>
           </div>
 
-          <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 mb-6">
+          <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 mb-6 hover:shadow-xl transition-shadow duration-300">
             <h3 class="text-lg font-bold text-gray-900 mb-4">User Flow Between Pages</h3>
             <SankeyFlow 
               client:load
@@ -493,7 +495,7 @@ const tabs = [
             />
           </div>
 
-          <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+          <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
             <h3 class="text-lg font-bold text-gray-900 mb-4">High-Converting User Paths</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {navigationData.mostCommonPaths.map((pathData, idx) => (
@@ -526,7 +528,7 @@ const tabs = [
           </div>
 
           <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
-            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
               <h3 class="text-lg font-bold text-gray-900 mb-4">Homepage Scroll Depth</h3>
               <div class="h-[300px]">
                 <LineChart 
@@ -543,7 +545,7 @@ const tabs = [
               </div>
             </div>
 
-            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
               <h3 class="text-lg font-bold text-gray-900 mb-4">Features Page Scroll</h3>
               <div class="h-[300px]">
                 <LineChart 
@@ -560,7 +562,7 @@ const tabs = [
               </div>
             </div>
 
-            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
               <h3 class="text-lg font-bold text-gray-900 mb-4">Pricing Page Scroll</h3>
               <div class="h-[300px]">
                 <LineChart 
@@ -579,7 +581,7 @@ const tabs = [
           </div>
 
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
-            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
               <h3 class="text-lg font-bold text-gray-900 mb-4">Click Heatmap - Most Clicked Elements</h3>
               <div class="h-[350px]">
                 <BarChart 
@@ -594,7 +596,7 @@ const tabs = [
               </div>
             </div>
 
-            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
               <h3 class="text-lg font-bold text-gray-900 mb-4">Exit Rate by Page</h3>
               <div class="h-[350px]">
                 <BarChart 
@@ -647,7 +649,7 @@ const tabs = [
           </div>
 
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
               <h3 class="text-lg font-bold text-gray-900 mb-4">Top Entry Paths</h3>
               <div class="h-[400px]">
                 <BarChart 
@@ -662,7 +664,7 @@ const tabs = [
               </div>
             </div>
 
-            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
               <h3 class="text-lg font-bold text-gray-900 mb-4">Conversion Steps</h3>
               <div class="h-[400px]">
                 <FunnelChart 
@@ -677,7 +679,7 @@ const tabs = [
             </div>
           </div>
 
-          <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 mb-6">
+          <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 mb-6 hover:shadow-xl transition-shadow duration-300">
             <h3 class="text-lg font-bold text-gray-900 mb-4">Best Performing CTAs</h3>
             <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
               {getStartedData.topReferringSections.map((section) => (
@@ -691,7 +693,7 @@ const tabs = [
           </div>
 
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
               <h3 class="text-lg font-bold text-gray-900 mb-4">Time to Conversion Distribution</h3>
               <div class="h-[350px]">
                 <DoughnutChart 
@@ -704,7 +706,7 @@ const tabs = [
               </div>
             </div>
 
-            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
               <h3 class="text-lg font-bold text-gray-900 mb-4">Average Journey Time by Entry Path</h3>
               <div class="h-[350px]">
                 <BarChart 

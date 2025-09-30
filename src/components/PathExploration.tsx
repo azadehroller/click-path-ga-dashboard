@@ -15,7 +15,7 @@ export default function PathExploration({ data, endingPoint, totalConversions }:
   const maxUsers = Math.max(...data.flatMap(step => step.topPages.map(p => p.users)));
 
   return (
-    <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+    <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
       <div className="mb-6">
         <h3 className="text-lg font-bold text-gray-900">Path to Form Submission</h3>
         <p className="text-sm text-gray-500 mt-1">User journey leading to {totalConversions.toLocaleString()} form submissions</p>
