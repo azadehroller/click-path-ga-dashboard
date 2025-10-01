@@ -36,14 +36,4 @@ const trendIcons = {
       <div class="text-4xl opacity-50">{icon}</div>
     )}
   </div>
-  
-  {trend && trendValue && (
-    <div class="mt-4 flex items-center">
-      <span class={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${trendColors[trend]}`}>
-        <span class="mr-1">{trendIcons[trend]}</span>
-        {trendValue}
-      </span>
-      <span class="ml-2 text-xs text-gray-500">Jan 1 - Sep 25, 2025</span>
-    </div>
-  )}
 </div>
